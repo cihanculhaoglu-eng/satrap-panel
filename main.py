@@ -6,6 +6,7 @@ app = FastAPI()
 # Geçici veri (Excel gibi)
 records = []
 
+
 @app.get("/", response_class=HTMLResponse)
 def home():
     rows = ""
