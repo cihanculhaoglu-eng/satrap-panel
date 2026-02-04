@@ -1,5 +1,5 @@
 from fastapi import FastAPI, Form
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, RedirectResponse
 
 app = FastAPI()
 
@@ -56,6 +56,7 @@ def home():
     </html>
     """
 
+
 @app.post("/ekle")
 def ekle(
     tarih: str = Form(...),
@@ -77,4 +78,5 @@ def ekle(
         "gumruk": gumruk,
         "not": not
     })
-    return {"status": "eklendi"}
+    # Kayıt sonrası anasayfaya dön
+    return RedirectResponse(url="/", status_code=303)
